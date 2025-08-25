@@ -11,8 +11,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AlphaModule::class,
-    BravoModule::class,
-    ContextModule::class
+        BravoModule::class,
+        ContextModule::class
     ]
 )
 @Singleton

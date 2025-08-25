@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.kspPlugin)
 }
 
 android {
@@ -45,4 +46,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.androidx.viewmodel)
+    implementation(libs.androidx.livedata)
+
+    compileOnly(libs.dagger.dagger)
+    implementation(libs.dagger.daggerCompiler)
+    ksp(libs.dagger.daggerCompiler)
 }

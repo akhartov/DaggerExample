@@ -9,11 +9,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.practicum.daggerexample.di.DaggerAppComponent
 import com.practicum.daggerexample.featureA.presentation.AlphaViewModel
 import com.practicum.daggerexample.featureB.presentation.BravoViewModel
+import com.practicum.daggerexample.featureC.presentation.CumulativeViewModel
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject lateinit var alphaViewModel: AlphaViewModel
     @Inject lateinit var bravoViewModel: BravoViewModel
+    @Inject lateinit var cumulativeViewModel: CumulativeViewModel
 
     private val textView by lazy { findViewById<TextView>(R.id.some_text_view) }
     private var lastText = ""
@@ -31,9 +33,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         alphaViewModel.doSomething()
-        bravoViewModel.doSomething()
+        bravoViewModel.doSomethingLikeBravo()
+        cumulativeViewModel.doSomethingLikeComp()
 
         alphaViewModel.getLiveData().observe(this) { someText ->
+            lastText += "$someText\n"
+            textView.text = lastText
+        }
+
+        bravoViewModel.getLiveData().observe(this) { someText ->
+            lastText += "$someText\n"
+            textView.text = lastText
+        }
+
+        cumulativeViewModel.getLiveData().observe(this) { someText ->
             lastText += "$someText\n"
             textView.text = lastText
         }

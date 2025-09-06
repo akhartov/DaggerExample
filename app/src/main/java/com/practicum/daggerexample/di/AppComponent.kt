@@ -5,6 +5,8 @@ import com.practicum.daggerexample.featureA.di.AlphaModule
 import com.practicum.daggerexample.featureA.presentation.AlphaViewModel
 import com.practicum.daggerexample.featureB.di.BravoModule
 import com.practicum.daggerexample.featureB.presentation.BravoViewModel
+import com.practicum.daggerexample.featureC.di.CumulativeModule
+import com.practicum.daggerexample.featureC.presentation.CumulativeViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,7 +14,8 @@ import javax.inject.Singleton
     modules = [
         AlphaModule::class,
         BravoModule::class,
-        ContextModule::class
+        ContextModule::class,
+        CumulativeModule::class
     ]
 )
 @Singleton
@@ -27,4 +30,5 @@ interface AppComponent {
 
     fun provideAplhaViewModel(): AlphaViewModel
     fun provideBravoViewModel(): BravoViewModel
+    fun provideCumulativeViewModel(): CumulativeViewModel
 }
